@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.ganzhex2019'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.supportx["kotlin_stdlib_jdk"]
+    implementation rootProject.ext.supportx["appcompat"]
+    implementation rootProject.ext.supportx["core_ktx"]
+    implementation rootProject.ext.supportx["constraintlayout"]
+    testImplementation rootProject.ext.supportx["junit"]
+    androidTestImplementation rootProject.ext.supportx["test_ext_junit"]
+    androidTestImplementation rootProject.ext.supportx["espresso_core"]
+
+}
